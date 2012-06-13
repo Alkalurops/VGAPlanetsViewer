@@ -283,7 +283,7 @@
     };
 
     PlanetView.prototype.generateLines = function() {
-      var coord1, coord2, distance, lines, _i, _j, _len, _len1, _ref, _ref1;
+      var coord1, coord2, distance, index1, index2, lines, upperBound, _i, _j;
       distance = function(coord1, coord2) {
         var d, square;
         square = function(x) {
@@ -293,12 +293,11 @@
         return d;
       };
       lines = [];
-      _ref = this.planetCoordinates;
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        coord1 = _ref[_i];
-        _ref1 = this.planetCoordinates;
-        for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
-          coord2 = _ref1[_j];
+      upperBound = this.planetCoordinates.length - 1;
+      for (index1 = _i = 0; 0 <= upperBound ? _i <= upperBound : _i >= upperBound; index1 = 0 <= upperBound ? ++_i : --_i) {
+        for (index2 = _j = index1; index1 <= upperBound ? _j <= upperBound : _j >= upperBound; index2 = index1 <= upperBound ? ++_j : --_j) {
+          coord1 = this.planetCoordinates[index1];
+          coord2 = this.planetCoordinates[index2];
           if (distance(coord1, coord2) < this.maxDistance) {
             lines.push([coord1, coord2]);
           }

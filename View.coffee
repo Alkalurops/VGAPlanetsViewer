@@ -178,8 +178,11 @@ class PlanetView extends View
 			return d
 
 		lines = []
-		for coord1 in @planetCoordinates
-			for coord2 in @planetCoordinates
+		upperBound = @planetCoordinates.length-1
+		for index1 in [0..upperBound]
+			for index2 in [index1..upperBound]
+				coord1 = @planetCoordinates[index1]
+				coord2 = @planetCoordinates[index2]
 				lines.push [coord1, coord2] if distance(coord1, coord2) < @maxDistance
 		@lines = lines
 		@update()
