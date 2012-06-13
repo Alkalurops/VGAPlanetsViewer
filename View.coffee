@@ -237,8 +237,10 @@ class PlanetView extends View
 	drawLine: (context, line) ->
 		coord1 =  @scaleCoordinates(line[0])
 		coord2 =  @scaleCoordinates(line[1])
-
-
+		return unless (@canvas.width + @maxDistance > coord1[0] > (0 - @maxDistance)) or
+				      (@canvas.width + @maxDistance > coord2[0] > (0 - @maxDistance)) or
+				      (@canvas.height + @maxDistance > coord1[1] > (0 - @maxDistance)) or
+				      (@canvas.height + @maxDistance > coord2[1] > (0 - @maxDistance))
 		context.lineWidth = 1 # if @scale < 1 then 1 else 1 * @scale
 		context.strokeStyle = @lineColor
 		context.beginPath()

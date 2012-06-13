@@ -363,9 +363,12 @@
     };
 
     PlanetView.prototype.drawLine = function(context, line) {
-      var coord1, coord2;
+      var coord1, coord2, _ref, _ref1, _ref2, _ref3;
       coord1 = this.scaleCoordinates(line[0]);
       coord2 = this.scaleCoordinates(line[1]);
+      if (!(((this.canvas.width + this.maxDistance > (_ref = coord1[0]) && _ref > (0 - this.maxDistance))) || ((this.canvas.width + this.maxDistance > (_ref1 = coord2[0]) && _ref1 > (0 - this.maxDistance))) || ((this.canvas.height + this.maxDistance > (_ref2 = coord1[1]) && _ref2 > (0 - this.maxDistance))) || ((this.canvas.height + this.maxDistance > (_ref3 = coord2[1]) && _ref3 > (0 - this.maxDistance))))) {
+        return;
+      }
       context.lineWidth = 1;
       context.strokeStyle = this.lineColor;
       context.beginPath();
