@@ -304,12 +304,12 @@ class PlanetView extends View
 
 
 window.ready =  () ->
-	planets = []
+	planetView = null
 	slider = new SliderView(()->
-		planets[0].setScale slider.element.value
+		planetView.setScale slider.element.value
 	)
 	checker = new CheckBoxView('show warp-routes', ()->
-		planets[0].shouldDrawLines (checker.element.checked)
+		planetView.shouldDrawLines (checker.element.checked)
 	)
-	searcher = new SearchView((even) -> planets[0].searchPlanet(searcher.element.value))
-	planets.push new PlanetView(slider)
+	searcher = new SearchView((even) -> planetView.searchPlanet(searcher.element.value))
+	planetView =  new PlanetView(slider)

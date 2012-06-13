@@ -457,18 +457,18 @@
   })(View);
 
   window.ready = function() {
-    var checker, planets, searcher, slider;
-    planets = [];
+    var checker, planetView, searcher, slider;
+    planetView = null;
     slider = new SliderView(function() {
-      return planets[0].setScale(slider.element.value);
+      return planetView.setScale(slider.element.value);
     });
     checker = new CheckBoxView('show warp-routes', function() {
-      return planets[0].shouldDrawLines(checker.element.checked);
+      return planetView.shouldDrawLines(checker.element.checked);
     });
     searcher = new SearchView(function(even) {
-      return planets[0].searchPlanet(searcher.element.value);
+      return planetView.searchPlanet(searcher.element.value);
     });
-    return planets.push(new PlanetView(slider));
+    return planetView = new PlanetView(slider);
   };
 
 }).call(this);
